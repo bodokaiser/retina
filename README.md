@@ -4,5 +4,6 @@ Automated retinopathy detection.
 
 ## Todos
 
-1. Tune SimpleBlobDetector parameters
-2.  
+1. Reindent `src/main.cpp`
+2. Write file to output argument
+3. Tune `SimpleBlobDetector::Params`

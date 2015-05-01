@@ -1,10 +1,16 @@
-package model
+package image
 
-import (
-	"errors"
+// #cgo CXXFLAGS: -std=c++11
+// #cgo pkg-config: opencv
+// #include "./image.h"
+import "C"
+import "errors"
 
-	"github.com/vincent-petithory/dataurl"
-)
+import "github.com/vincent-petithory/dataurl"
+
+func Process(src, dst string) {
+	C.process(C.CString(src), C.CString(dst))
+}
 
 type Image struct {
 	Bytes  []byte

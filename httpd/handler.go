@@ -1,11 +1,9 @@
 package httpd
 
-import (
-	"net/http"
+import "net/http"
 
-	"github.com/bodokaiser/retina/model"
-	"github.com/labstack/echo"
-)
+import "github.com/labstack/echo"
+import "github.com/bodokaiser/retina/model"
 
 type Handler struct {
 	router *echo.Echo

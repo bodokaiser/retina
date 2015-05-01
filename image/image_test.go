@@ -1,4 +1,4 @@
-package model
+package image
 
 import "testing"
 
@@ -18,6 +18,10 @@ type ImageSuite struct {
 
 func (s *ImageSuite) SetUpTest(c *check.C) {
 	s.image = new(Image)
+}
+
+func (s *ImageSuite) TestProcess(c *check.C) {
+	Process("../../medex/retina.jpg", "/tmp/foo.jpg")
 }
 
 func (s *ImageSuite) TestUnmarshalJSON(c *check.C) {

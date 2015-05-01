@@ -1,11 +1,11 @@
 package model
 
-import (
-	"encoding/json"
-	"testing"
-)
+import "encoding/json"
+import "testing"
 
 import "gopkg.in/check.v1"
+
+import "github.com/bodokaiser/retina/image"
 
 func TestReport(t *testing.T) {
 	check.Suite(&ReportSuite{
@@ -20,7 +20,7 @@ type ReportSuite struct {
 }
 
 func (s *ReportSuite) SetUpTest(c *check.C) {
-	s.report = &Report{Image: new(Image)}
+	s.report = &Report{Image: new(image.Image)}
 }
 
 func (s *ReportSuite) TestUnmarshalJSON(c *check.C) {

@@ -1,13 +1,11 @@
 package httpd
 
-import (
-	"net/http"
-	"net/http/httptest"
-	"strings"
-	"testing"
+import "net/http"
+import "net/http/httptest"
+import "strings"
+import "testing"
 
-	"gopkg.in/check.v1"
-)
+import "gopkg.in/check.v1"
 
 func TestHandler(t *testing.T) {
 	check.Suite(&HandlerSuite{})

@@ -1,5 +1,7 @@
 package model
 
+import "github.com/bodokaiser/retina/image"
+
 type Report struct {
-	Image *Image
+	Image *image.Image
 }

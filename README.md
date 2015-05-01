@@ -4,6 +4,8 @@ Automated retinopathy detection.
 
 ## Todos
 
-1. Reindent `src/main.cpp`
-2. Write file to output argument
-3. Tune `SimpleBlobDetector::Params`
+- [x] create package for models
+- [x] create package for rest interface
+- [ ] rename `model` package to `report`
+- [ ] create `os/exec` bindings to opencv build
+- [ ] create `C-CPP-Go` wrapper to `report` package

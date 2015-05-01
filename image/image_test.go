@@ -1,5 +1,6 @@
 package image
 
+import "io/ioutil"
 import "testing"
 
 import "gopkg.in/check.v1"
@@ -21,7 +22,11 @@ func (s *ImageSuite) SetUpTest(c *check.C) {
 }
 
 func (s *ImageSuite) TestProcess(c *check.C) {
-	Process("../../medex/retina.jpg", "/tmp/foo.jpg")
+	buf, err := ioutil.ReadFile("../../medex/retina.jpg")
+	c.Assert(err, check.IsNil)
+
+	src := &Image{buf, "jpeg"}
+	src.Process()
 }
 
 func (s *ImageSuite) TestUnmarshalJSON(c *check.C) {

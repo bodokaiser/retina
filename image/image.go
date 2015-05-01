@@ -5,12 +5,9 @@ package image
 // #include "./image.h"
 import "C"
 import "errors"
+import "unsafe"
 
 import "github.com/vincent-petithory/dataurl"
-
-func Process(src, dst string) {
-	C.process(C.CString(src), C.CString(dst))
-}
 
 type Image struct {
 	Bytes  []byte
@@ -18,6 +15,22 @@ type Image struct {
 }
 
 var ErrInvalidContentType = errors.New("invalid content type")
+
+func (i *Image) Process() *Image {
+	cin := &C.image{
+		length: C.uint(len(i.Bytes)),
+		format: C.CString(i.Format),
+		bytes:  (*C.uchar)(unsafe.Pointer(&i.Bytes[0])),
+	}
+
+	cout := C.process(cin)
+	defer C.free(unsafe.Pointer(cout))
+
+	return &Image{
+		Bytes:  C.GoBytes(unsafe.Pointer(cout.bytes), C.int(cout.length)),
+		Format: C.GoString(cout.format),
+	}
+}
 
 func (i *Image) UnmarshalJSON(b []byte) error {
 	s := string(b[1 : len(b)-1])

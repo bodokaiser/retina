@@ -13,6 +13,7 @@ func NewHandler() *Handler {
 	h := &Handler{
 		router: echo.New(),
 	}
+	h.router.Get("/", h.Default)
 	h.router.Post("/", h.Upload)
 
 	return h
@@ -29,6 +30,10 @@ func (h *Handler) Upload(c *echo.Context) error {
 	}
 
 	return c.JSON(http.StatusOK, r)
+}
+
+func (h *Handler) Default(c *echo.Context) error {
+	return c.NoContent(http.StatusNoContent)
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {

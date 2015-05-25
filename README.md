@@ -2,10 +2,17 @@
 
 Automated retinopathy detection.
 
-## Todos
+## Example
 
-- [x] create package for models
-- [x] create package for rest interface
-- [ ] rename `model` package to `report`
-- [ ] create `os/exec` bindings to opencv build
-- [ ] create `C-CPP-Go` wrapper to `report` package
+    go run ./cmd/httpd/main.go
+
+Start the server, optionally customize address to listen via `--listen`.
+
+    curl -H "Content-Type: application/json" -X POST -d '{"input":"<encoded as base64>"}' http://localhost:3000/
+
+As result you should get a json encoded response which contains the `output`
+attribute which is the image encoded as base64 with marked symptoms.
+
+## License
+
+Copyright © 2015 Bodo Kaiser <i@bodokaiser.io>

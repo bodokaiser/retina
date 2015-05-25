@@ -32,6 +32,12 @@ func (i *Image) Process() *Image {
 	}
 }
 
+func (i *Image) MarshalJSON() ([]byte, error) {
+	s := dataurl.New([]byte(i.Bytes), "image/"+i.Format).String()
+
+	return []byte(`"` + s + `"`), nil
+}
+
 func (i *Image) UnmarshalJSON(b []byte) error {
 	s := string(b[1 : len(b)-1])
 

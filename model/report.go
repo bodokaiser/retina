@@ -3,5 +3,12 @@ package model
 import "github.com/bodokaiser/retina/image"
 
 type Report struct {
-	Image *image.Image
+	Input  *image.Image
+	Output *image.Image
+}
+
+func (r *Report) Process() error {
+	r.Output = r.Input.Process()
+
+	return nil
 }

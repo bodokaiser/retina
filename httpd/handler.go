@@ -24,8 +24,11 @@ func (h *Handler) Upload(c *echo.Context) error {
 	if err := c.Bind(r); err != nil {
 		return err
 	}
+	if err := r.Process(); err != nil {
+		return err
+	}
 
-	return c.NoContent(http.StatusNoContent)
+	return c.JSON(http.StatusOK, r)
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {

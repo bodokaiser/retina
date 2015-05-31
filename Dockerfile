@@ -27,6 +27,8 @@ RUN cmake \
 
 RUN make && make install && rm -rf $CVPATH
 
+# workaround to fix ip blacklisting from official google mirrors
+RUN git clone http://github.com/golang/net $GOPATH/src/golang.org/x/net
 # workaround to linking problem by using gcc over clang
 RUN CC="" CXX="" go get github.com/bodokaiser/retina/...
 RUN go build github.com/bodokaiser/retina/cmd/http

@@ -5,9 +5,22 @@ import "net/http"
 
 import "github.com/bodokaiser/retina/httpd"
 
+type config struct {
+	address string
+}
+
 func main() {
-	listen := *flag.String("listen", ":3000", "")
+	c := flags()
 
 	http.HandleFunc("/", httpd.NewHandler().ServeHTTP)
-	http.ListenAndServe(listen, nil)
+	http.ListenAndServe(c.address, nil)
+}
+
+func flags() config {
+	c := config{}
+
+	flag.StringVar(&c.address, "listen", ":3000", "")
+	flag.Parse()
+
+	return c
 }

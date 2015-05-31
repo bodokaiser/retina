@@ -49,7 +49,7 @@ func (s *HandlerSuite) TestUpload(c *check.C) {
 
 func (s *HandlerSuite) request() *http.Request {
 	buf, _ := json.Marshal(s.report)
-	req, _ := http.NewRequest("POST", "/", bytes.NewReader(buf))
+	req, _ := http.NewRequest("POST", "/images", bytes.NewReader(buf))
 	req.Header.Set("Content-Type", "application/json")
 
 	return req

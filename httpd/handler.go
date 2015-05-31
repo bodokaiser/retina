@@ -13,8 +13,8 @@ func NewHandler() *Handler {
 	h := &Handler{
 		router: echo.New(),
 	}
-	h.router.Get("/", h.Default)
-	h.router.Post("/", h.Upload)
+	h.router.Get("/images", h.Default)
+	h.router.Post("/images", h.Upload)
 
 	return h
 }

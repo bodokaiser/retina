@@ -3,8 +3,8 @@ package model
 import "github.com/bodokaiser/retina/image"
 
 type Report struct {
-	Input  *image.Image
-	Output *image.Image
+	Input  *image.Image `json:"input"`
+	Output *image.Image `json:"output"`
 }
 
 func (r *Report) Process() error {
